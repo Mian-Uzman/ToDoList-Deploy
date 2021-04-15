@@ -1,0 +1,68 @@
+* {
+margin:0;
+}
+
+.all-lists{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+.heading{
+    text-align: center;
+}
+
+
+
+
+.item-input{
+    
+    margin-top: 50px;
+    width: 40%;
+    margin-bottom: 50px;
+}
+
+.login-page{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.home-card{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.footer{
+    margin-top: 300px;
+}
+.footer-list {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.login-screen{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #696969;
+    width: 400px;
+    padding: 10px;
+}
+.register-screen{
+    padding: 10px;
+
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #696969;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}
