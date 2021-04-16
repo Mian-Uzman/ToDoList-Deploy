@@ -47,7 +47,6 @@ function ToDoList() {
             name: newList,
         }, requestOptions).catch(err => console.log(err));
         setChangeDetection(true);
-        SetNewList('');
 
     }
 
