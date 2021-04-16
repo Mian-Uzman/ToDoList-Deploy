@@ -139,6 +139,11 @@ function Items(props) {
             name: listID,
         }, requestOptions).catch(err => console.log(err));
         setChangeDetection(true);
+        SetNewItem([{
+            id: "",
+            text: "",
+            complete: false,
+        }]);
 
     }
 
