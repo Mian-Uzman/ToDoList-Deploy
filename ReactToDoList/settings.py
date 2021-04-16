@@ -19,7 +19,9 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -30,13 +32,10 @@ SECRET_KEY = 'x!8y8rw8&e!8nxa_u-q9_1v)ugdmnye)b)ke)$+d%1j2h!#p8-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['react-django-todolist.herokuapp.com', '127.0.0.1:8000', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000'
-]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -103,13 +102,9 @@ JWT_AUTH = {
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -156,20 +151,17 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Configure Django App for Heroku.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-django_heroku.settings(locals())
 
-BASE_DIR = Path(__file__).resolve().root
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
 
-    
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Add these at the very last line of settings.py
+django_heroku.settings(locals())
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
