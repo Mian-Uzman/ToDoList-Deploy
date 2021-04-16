@@ -11,7 +11,10 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import axios from 'axios';
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 function App() {
   const [username, SetUsername] = useState('');
